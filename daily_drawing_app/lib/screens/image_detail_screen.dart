@@ -31,7 +31,7 @@ class PlaceDetailScreen extends StatelessWidget {
             height: 10,
           ),
           Text(
-            selectedPlace.dateTime,
+            selectedPlace.dateTime.toIso8601String(),
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 20,

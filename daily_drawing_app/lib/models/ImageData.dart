@@ -19,7 +19,7 @@ class ImageData {
   final String title;
   // final PlaceLocation location;
   final File image;
-  final String dateTime;
+  final DateTime dateTime;
 
   ImageData({
     @required this.id,
