@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import './providers/great_places.dart';
+import 'providers/images_provider.dart';
 
 import 'screens/add_images_screen.dart';
 import 'screens/images_list_screen.dart';

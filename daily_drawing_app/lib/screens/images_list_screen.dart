@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'add_images_screen.dart';
-import '../providers/great_places.dart';
+import '../providers/images_provider.dart';
 import 'image_detail_screen.dart';
 
 class PlacesListScreen extends StatelessWidget {

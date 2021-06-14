@@ -17,13 +17,15 @@ class PlaceLocation {
 class ImageData {
   final String id;
   final String title;
+  final String tags;
   // final PlaceLocation location;
   final File image;
   final DateTime dateTime;
 
   ImageData({
     @required this.id,
-    @required this.title,
+    this.title,
+    this.tags,
     // @required this.location,
     @required this.image,
     @required this.dateTime
