@@ -65,7 +65,7 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
                     SizedBox(
                       height: 10,
                     ),
-                    LocationInput(_selectPlace),
+                    // LocationInput(_selectPlace),
                   ],
                 ),
               ),

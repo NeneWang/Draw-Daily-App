@@ -19,6 +19,31 @@ class _ImageInputState extends State<ImageInput> {
   Future<void> _takePicture() async {
     final picker = ImagePicker();
     final imageFile = await picker.getImage(
+      source: ImageSource.camera,
+    );
+
+    if (imageFile == null) {
+      return;
+    }
+
+    setState(() {
+      if (imageFile != null) {
+        _storedImage = File(imageFile.path);
+      } else {
+        print("No Image Selected");
+      }
+    });
+    final appDir = await syspaths.getApplicationDocumentsDirectory();
+    final fileName = path.basename(imageFile.path);
+    final savedImage = await _storedImage.copy('${appDir.path}/$fileName');
+    widget.onSelectImage(savedImage);
+
+    // imageFile.copy(newPath); //copy non existent
+  }
+
+  Future<void> _takePictureFromGallery() async {
+    final picker = ImagePicker();
+    final imageFile = await picker.getImage(
       source: ImageSource.gallery,
     );
 
@@ -62,13 +87,22 @@ class _ImageInputState extends State<ImageInput> {
         SizedBox(
           width: 10,
         ),
-        Expanded(
-          child: FlatButton.icon(
-            icon: Icon(Icons.camera),
-            label: Text('Take Picture'),
-            textColor: Theme.of(context).primaryColor,
-            onPressed: _takePicture,
-          ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            FlatButton.icon(
+              icon: Icon(Icons.camera),
+              label: Text('Take Pictures'),
+              textColor: Theme.of(context).primaryColor,
+              onPressed: _takePicture,
+            ),FlatButton.icon(
+              icon: Icon(Icons.camera),
+              label: Text('Choose From Gallery'),
+              textColor: Theme.of(context).primaryColor,
+              onPressed: _takePictureFromGallery,
+            ),
+          ],
         )
       ],
     );

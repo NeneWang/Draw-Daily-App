@@ -31,7 +31,7 @@ class PlaceDetailScreen extends StatelessWidget {
             height: 10,
           ),
           Text(
-            selectedPlace.location.address,
+            selectedPlace.dateTime,
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 20,
@@ -41,21 +41,21 @@ class PlaceDetailScreen extends StatelessWidget {
           SizedBox(
             height: 10,
           ),
-          FlatButton(
-            child: Text('View on Map'),
-            textColor: Theme.of(context).primaryColor,
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  fullscreenDialog: true,
-                  builder: (ctx) => MapScreen(
-                    initialLocation: selectedPlace.location,
-                    isSelecting: false,
-                  ),
-                ),
-              );
-            },
-          ),
+          // FlatButton(
+          //   child: Text('View on Map'),
+          //   textColor: Theme.of(context).primaryColor,
+          //   onPressed: () {
+          //     Navigator.of(context).push(
+          //       MaterialPageRoute(
+          //         fullscreenDialog: true,
+          //         builder: (ctx) => MapScreen(
+          //           initialLocation: selectedPlace.dateTime,
+          //           isSelecting: false,
+          //         ),
+          //       ),
+          //     );
+          //   },
+          // ),
         ],
       ),
     );
