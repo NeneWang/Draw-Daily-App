@@ -21,6 +21,7 @@ class GreatPlaces with ChangeNotifier {
     String pickedTitle,
     File pickedImage,
     String testDate,
+    List<String> selectedTags 
   ) async {
     // final address = await LocationHelper.getPlaceAddress(
     //     pickedLocation.latitude, pickedLocation.longitude);
@@ -35,7 +36,9 @@ class GreatPlaces with ChangeNotifier {
       id: DateTime.now().toString(),
       image: pickedImage,
       title: pickedTitle,
-      dateTime: DateTime.parse(testDate)
+      dateTime: DateTime.parse(testDate),
+      tags: selectedTags,
+
     );
     _items.add(newPlace);
     notifyListeners();
@@ -44,6 +47,7 @@ class GreatPlaces with ChangeNotifier {
       'title': newPlace.title,
       'image': newPlace.image.path,
       'dateTime':newPlace.dateTime,
+      'tags': selectedTags.toString()
     });
   }
 

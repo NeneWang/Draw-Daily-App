@@ -9,7 +9,7 @@ import '../providers/images_provider.dart';
 import '../models/ImageData.dart';
 
 class AddPlaceScreen extends StatefulWidget {
-  static const routeName = '/add-place';
+  static const routeName = '/add-images';
 
   @override
   _AddPlaceScreenState createState() => _AddPlaceScreenState();
@@ -28,9 +28,6 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
     _pickedImage = pickedImage;
   }
 
-  void _selectPlace(double lat, double lng) {
-    _pickedLocation = PlaceLocation(latitude: lat, longitude: lng);
-  }
 
   void _addTag(String tagName) {
     setState(() {
@@ -63,7 +60,7 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
       return;
     }
     Provider.of<GreatPlaces>(context, listen: false).addImage(
-        _titleController.text, _pickedImage, DateTime.now().toIso8601String());
+        _titleController.text, _pickedImage, DateTime.now().toIso8601String(), selectedTags);
     Navigator.of(context).pop();
 
     // print("Saving Place");
