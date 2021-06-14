@@ -17,7 +17,6 @@ class AddPlaceScreen extends StatefulWidget {
 
 class _AddPlaceScreenState extends State<AddPlaceScreen> {
   List<String> selectedTags = [];
-  List<Widget> tagsWidgets = [];
 
   final _titleController = TextEditingController();
   final _tagsController = TextEditingController();
@@ -36,22 +35,15 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
   void _addTag(String tagName) {
     setState(() {
       selectedTags.add(tagName);
-      tagsWidgets.add(Chip(
-        label: Text(tagName),
-        deleteIcon: Icon(Icons.cancel),
-        deleteIconColor: Colors.grey,
-        onDeleted: () {},
-      ));
     });
     print(selectedTags);
   }
 
-   Iterable<Widget> get getTagsWidgets sync* {
+  Iterable<Widget> get getTagsWidgets sync* {
     for (final String tagName in selectedTags) {
       yield Padding(
         padding: const EdgeInsets.all(4.0),
         child: Chip(
-          
           label: Text(tagName),
           onDeleted: () {
             setState(() {
@@ -65,16 +57,16 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
     }
   }
 
-
   void _savePlace() {
     //Only the picked Image is necessary
     if (_pickedImage == null) {
       return;
     }
-    Provider.of<GreatPlaces>(context, listen: false).addPlace(
+    Provider.of<GreatPlaces>(context, listen: false).addImage(
         _titleController.text, _pickedImage, DateTime.now().toIso8601String());
     Navigator.of(context).pop();
-    print("Saving Place");
+
+    // print("Saving Place");
   }
 
   @override

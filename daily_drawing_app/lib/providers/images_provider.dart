@@ -17,7 +17,7 @@ class GreatPlaces with ChangeNotifier {
     return _items.firstWhere((place) => place.id == id);
   }
 
-  Future<void> addPlace(
+  Future<void> addImage(
     String pickedTitle,
     File pickedImage,
     String testDate,
@@ -47,7 +47,7 @@ class GreatPlaces with ChangeNotifier {
     });
   }
 
-  Future<void> fetchAndSetPlaces() async {
+  Future<void> fetchAndSetImages() async {
     final dataList = await DBHelper.getData('user_places');
     _items = dataList
         .map(
