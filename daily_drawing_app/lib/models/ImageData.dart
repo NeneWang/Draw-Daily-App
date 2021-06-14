@@ -14,14 +14,14 @@ class PlaceLocation {
   });
 }
 
-class Place {
+class ImageData {
   final String id;
   final String title;
   // final PlaceLocation location;
   final File image;
   final String dateTime;
 
-  Place({
+  ImageData({
     @required this.id,
     @required this.title,
     // @required this.location,

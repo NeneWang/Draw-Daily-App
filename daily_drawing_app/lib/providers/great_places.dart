@@ -2,18 +2,18 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 
-import '../models/place.dart';
+import '../models/ImageData.dart';
 import '../helpers/db_helper.dart';
 import '../helpers/location_helper.dart';
 
 class GreatPlaces with ChangeNotifier {
-  List<Place> _items = [];
+  List<ImageData> _items = [];
 
-  List<Place> get items {
+  List<ImageData> get items {
     return [..._items];
   }
 
-  Place findById(String id) {
+  ImageData findById(String id) {
     return _items.firstWhere((place) => place.id == id);
   }
 
@@ -31,7 +31,7 @@ class GreatPlaces with ChangeNotifier {
     // );
 
     print("uploading place");
-    final newPlace = Place(
+    final newPlace = ImageData(
       id: DateTime.now().toString(),
       image: pickedImage,
       title: pickedTitle,
@@ -51,7 +51,7 @@ class GreatPlaces with ChangeNotifier {
     final dataList = await DBHelper.getData('user_places');
     _items = dataList
         .map(
-          (item) => Place(
+          (item) => ImageData(
             id: item['id'],
             title: item['title'],
             image: File(item['image']),
