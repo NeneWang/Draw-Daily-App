@@ -35,7 +35,7 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
       return;
     }
     Provider.of<GreatPlaces>(context, listen: false)
-        .addPlace(_titleController.text, _pickedImage, _pickedLocation);
+        .addPlace(_titleController.text, _pickedImage, "test");
     Navigator.of(context).pop();
   }
 

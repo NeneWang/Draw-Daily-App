@@ -20,27 +20,30 @@ class GreatPlaces with ChangeNotifier {
   Future<void> addPlace(
     String pickedTitle,
     File pickedImage,
-    PlaceLocation pickedLocation,
+    String testDate,
   ) async {
-    final address = await LocationHelper.getPlaceAddress(
-        pickedLocation.latitude, pickedLocation.longitude);
-    final updatedLocation = PlaceLocation(
-      latitude: pickedLocation.latitude,
-      longitude: pickedLocation.longitude,
-      address: address,
-    );
-    final newPlace = Place(
-      id: DateTime.now().toString(),
-      image: pickedImage,
-      title: pickedTitle,
-    );
-    _items.add(newPlace);
-    notifyListeners();
-    DBHelper.insert('user_places', {
-      'id': newPlace.id,
-      'title': newPlace.title,
-      'image': newPlace.image.path,
-    });
+    // final address = await LocationHelper.getPlaceAddress(
+    //     pickedLocation.latitude, pickedLocation.longitude);
+    // final updatedLocation = PlaceLocation(
+    //   latitude: pickedLocation.latitude,
+    //   longitude: pickedLocation.longitude,
+    //   address: address,
+    // );
+
+    print("uploading place");
+    // final newPlace = Place(
+    //   id: DateTime.now().toString(),
+    //   image: pickedImage,
+    //   title: pickedTitle,
+    //   dateTime: testDate
+    // );
+    // _items.add(newPlace);
+    // notifyListeners();
+    // DBHelper.insert('user_places', {
+    //   'id': newPlace.id,
+    //   'title': newPlace.title,
+    //   'image': newPlace.image.path,
+    // });
   }
 
   Future<void> fetchAndSetPlaces() async {
