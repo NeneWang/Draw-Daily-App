@@ -31,19 +31,19 @@ class GreatPlaces with ChangeNotifier {
     // );
 
     print("uploading place");
-    // final newPlace = Place(
-    //   id: DateTime.now().toString(),
-    //   image: pickedImage,
-    //   title: pickedTitle,
-    //   dateTime: testDate
-    // );
-    // _items.add(newPlace);
-    // notifyListeners();
-    // DBHelper.insert('user_places', {
-    //   'id': newPlace.id,
-    //   'title': newPlace.title,
-    //   'image': newPlace.image.path,
-    // });
+    final newPlace = Place(
+      id: DateTime.now().toString(),
+      image: pickedImage,
+      title: pickedTitle,
+      dateTime: testDate
+    );
+    _items.add(newPlace);
+    notifyListeners();
+    DBHelper.insert('user_places', {
+      'id': newPlace.id,
+      'title': newPlace.title,
+      'image': newPlace.image.path,
+    });
   }
 
   Future<void> fetchAndSetPlaces() async {
