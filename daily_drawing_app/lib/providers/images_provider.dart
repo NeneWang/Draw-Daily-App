@@ -37,24 +37,28 @@ class GreatPlaces with ChangeNotifier {
     );
     _items.add(newPlace);
     notifyListeners();
-    DBHelper.insert('user_images', {
+    DBHelper.insert('user_places', {
       'id': newPlace.id,
       'title': newPlace.title,
       'image': newPlace.image.path,
-      'dateTime': newPlace.dateTime,
-      'tags': selectedTags.join(",")
+      'dateTime': newPlace.dateTime.toIso8601String(),
+      'tags': newPlace.tags.join(",")
     });
+    print("Successfully submitted");
+    print(newPlace.tags.join(","));
   }
 
   Future<void> fetchAndSetImages() async {
-    final dataList = await DBHelper.getData('user_images');
+    final dataList = await DBHelper.getData('user_places');
+    print("Fetching");
+    print(dataList);
     _items = dataList
         .map(
           (item) => ImageData(
               id: item['id'],
               title: item['title'],
               image: File(item['image']),
-              dateTime: item['dateTime'],
+              dateTime: DateTime.parse(item['dateTime']),
               tags: item['tags'] != null ? null : item['tags'].split(',')),
         )
         .toList();

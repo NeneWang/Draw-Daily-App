@@ -10,7 +10,7 @@ class PlacesListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Your Places'),
+        title: Text('Images'),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.add),
