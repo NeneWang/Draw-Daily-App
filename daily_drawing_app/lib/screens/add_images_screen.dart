@@ -16,7 +16,12 @@ class AddPlaceScreen extends StatefulWidget {
 }
 
 class _AddPlaceScreenState extends State<AddPlaceScreen> {
+  List<String> selectedTags = [];
+  List<Widget> tagsWidgets = [];
+
   final _titleController = TextEditingController();
+  final _tagsController = TextEditingController();
+
   File _pickedImage;
   PlaceLocation _pickedLocation;
 
@@ -27,6 +32,39 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
   void _selectPlace(double lat, double lng) {
     _pickedLocation = PlaceLocation(latitude: lat, longitude: lng);
   }
+
+  void _addTag(String tagName) {
+    setState(() {
+      selectedTags.add(tagName);
+      tagsWidgets.add(Chip(
+        label: Text(tagName),
+        deleteIcon: Icon(Icons.cancel),
+        deleteIconColor: Colors.grey,
+        onDeleted: () {},
+      ));
+    });
+    print(selectedTags);
+  }
+
+   Iterable<Widget> get getTagsWidgets sync* {
+    for (final String tagName in selectedTags) {
+      yield Padding(
+        padding: const EdgeInsets.all(4.0),
+        child: Chip(
+          
+          label: Text(tagName),
+          onDeleted: () {
+            setState(() {
+              selectedTags.removeWhere((itemName) {
+                return tagName == itemName;
+              });
+            });
+          },
+        ),
+      );
+    }
+  }
+
 
   void _savePlace() {
     //Only the picked Image is necessary
@@ -55,8 +93,28 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
                 child: Column(
                   children: <Widget>[
                     TextField(
-                      decoration: InputDecoration(labelText: 'Title'),
+                      decoration:
+                          InputDecoration(labelText: 'Title (optional)'),
                       controller: _titleController,
+                    ),
+                    TextField(
+                      decoration: InputDecoration(labelText: 'Tags (optional)'),
+                      controller: _tagsController,
+                      onSubmitted: _addTag,
+                    ),
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 15),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Expanded(
+                            child: Wrap(
+                              spacing: 10,
+                              children: getTagsWidgets.toList(),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                     SizedBox(
                       height: 10,
