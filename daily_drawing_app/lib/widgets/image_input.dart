@@ -98,7 +98,7 @@ class _ImageInputState extends State<ImageInput> {
               onPressed: _takePicture,
             ),FlatButton.icon(
               icon: Icon(Icons.camera),
-              label: Text('Choose From Gallery'),
+              label: Text('Choose Gallery'),
               textColor: Theme.of(context).primaryColor,
               onPressed: _takePictureFromGallery,
             ),
