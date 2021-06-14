@@ -33,6 +33,7 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
     setState(() {
       selectedTags.add(tagName);
     });
+    _tagsController.clear();
     print(selectedTags);
   }
 

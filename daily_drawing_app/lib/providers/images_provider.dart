@@ -59,7 +59,7 @@ class GreatPlaces with ChangeNotifier {
               title: item['title'],
               image: File(item['image']),
               dateTime: DateTime.parse(item['dateTime']),
-              tags: item['tags'] != null ? null : item['tags'].split(',')),
+              tags: item['tags'] != null ? item['tags'].split(',') : null),
         )
         .toList();
     notifyListeners();
