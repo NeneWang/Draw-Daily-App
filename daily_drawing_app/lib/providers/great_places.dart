@@ -43,6 +43,7 @@ class GreatPlaces with ChangeNotifier {
       'id': newPlace.id,
       'title': newPlace.title,
       'image': newPlace.image.path,
+      'dateTime':newPlace.dateTime,
     });
   }
 
@@ -54,6 +55,7 @@ class GreatPlaces with ChangeNotifier {
             id: item['id'],
             title: item['title'],
             image: File(item['image']),
+            dateTime: item['dateTime']
           ),
         )
         .toList();
