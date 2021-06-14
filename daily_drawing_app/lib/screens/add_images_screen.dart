@@ -29,12 +29,12 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
   }
 
   void _savePlace() {
-    if (_titleController.text.isEmpty ||
-        _pickedImage == null ) {
+    //Only the picked Image is necessary
+    if (_pickedImage == null) {
       return;
     }
-    Provider.of<GreatPlaces>(context, listen: false)
-        .addPlace(_titleController.text, _pickedImage, DateTime.now().toIso8601String());
+    Provider.of<GreatPlaces>(context, listen: false).addPlace(
+        _titleController.text, _pickedImage, DateTime.now().toIso8601String());
     Navigator.of(context).pop();
     print("Saving Place");
   }
