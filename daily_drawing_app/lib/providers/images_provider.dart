@@ -17,12 +17,8 @@ class GreatPlaces with ChangeNotifier {
     return _items.firstWhere((place) => place.id == id);
   }
 
-  Future<void> addImage(
-    String pickedTitle,
-    File pickedImage,
-    String testDate,
-    List<String> selectedTags 
-  ) async {
+  Future<void> addImage(String pickedTitle, File pickedImage, String testDate,
+      List<String> selectedTags) async {
     // final address = await LocationHelper.getPlaceAddress(
     //     pickedLocation.latitude, pickedLocation.longitude);
     // final updatedLocation = PlaceLocation(
@@ -38,29 +34,28 @@ class GreatPlaces with ChangeNotifier {
       title: pickedTitle,
       dateTime: DateTime.parse(testDate),
       tags: selectedTags,
-
     );
     _items.add(newPlace);
     notifyListeners();
-    DBHelper.insert('user_places', {
+    DBHelper.insert('user_images', {
       'id': newPlace.id,
       'title': newPlace.title,
       'image': newPlace.image.path,
-      'dateTime':newPlace.dateTime,
-      'tags': selectedTags.toString()
+      'dateTime': newPlace.dateTime,
+      'tags': selectedTags.join(",")
     });
   }
 
   Future<void> fetchAndSetImages() async {
-    final dataList = await DBHelper.getData('user_places');
+    final dataList = await DBHelper.getData('user_images');
     _items = dataList
         .map(
           (item) => ImageData(
-            id: item['id'],
-            title: item['title'],
-            image: File(item['image']),
-            dateTime: item['dateTime']
-          ),
+              id: item['id'],
+              title: item['title'],
+              image: File(item['image']),
+              dateTime: item['dateTime'],
+              tags: item['tags'] != null ? null : item['tags'].split(',')),
         )
         .toList();
     notifyListeners();
