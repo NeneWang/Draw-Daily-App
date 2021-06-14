@@ -34,7 +34,7 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
       return;
     }
     Provider.of<GreatPlaces>(context, listen: false)
-        .addPlace(_titleController.text, _pickedImage, "test");
+        .addPlace(_titleController.text, _pickedImage, DateTime.now().toIso8601String());
     Navigator.of(context).pop();
     print("Saving Place");
   }
