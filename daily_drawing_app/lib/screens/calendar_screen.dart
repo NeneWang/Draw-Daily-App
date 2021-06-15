@@ -8,7 +8,7 @@ import 'image_detail_screen.dart';
 import '../widgets/bottom_navigator.dart';
 
 class CalendarScreen extends StatelessWidget {
-static const routeName = '/calendar';
+  static const routeName = '/calendar';
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ static const routeName = '/calendar';
           title: Text('View Progress'),
           actions: <Widget>[
             IconButton(
-              icon: Icon(Icons.add),
+              icon: Icon(Icons.add_a_photo),
               onPressed: () {
                 Navigator.of(context).pushNamed(AddPlaceScreen.routeName);
               },

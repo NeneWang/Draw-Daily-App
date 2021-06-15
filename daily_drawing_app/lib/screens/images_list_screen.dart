@@ -16,7 +16,7 @@ class ImagesListScreen extends StatelessWidget {
           title: Text('My Images'),
           actions: <Widget>[
             IconButton(
-              icon: Icon(Icons.add),
+              icon: Icon(Icons.add_a_photo),
               onPressed: () {
                 Navigator.of(context).pushNamed(AddPlaceScreen.routeName);
               },

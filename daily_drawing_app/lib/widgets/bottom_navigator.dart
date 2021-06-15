@@ -15,7 +15,7 @@ class BottomNavigator extends StatelessWidget {
       showSelectedLabels: true,
       showUnselectedLabels: false,
       onTap: (int index) {
-        print(index);
+        // print(index);
         switch (index) {
           case 0:
             Navigator.of(context).pushReplacement(PageRouteBuilder(
