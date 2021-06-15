@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../screens/calendar_screen.dart';
 import '../screens/images_list_screen.dart';
+import '../screens/profile_screen.dart';
 
 class BottomNavigator extends StatelessWidget {
   final int indexNavigator;
@@ -24,7 +25,13 @@ class BottomNavigator extends StatelessWidget {
             break;
           case 1:
             Navigator.of(context).pushReplacement(PageRouteBuilder(
-              pageBuilder: (_, __, ___) =>CalendarScreen(),
+              pageBuilder: (_, __, ___) => CalendarScreen(),
+              transitionDuration: Duration(seconds: 0),
+            ));
+            break;
+            case 2:
+            Navigator.of(context).pushReplacement(PageRouteBuilder(
+              pageBuilder: (_, __, ___) => ProfileScreen(),
               transitionDuration: Duration(seconds: 0),
             ));
             break;
@@ -45,6 +52,11 @@ class BottomNavigator extends StatelessWidget {
           backgroundColor: Theme.of(context).primaryColor,
           icon: Icon(Icons.calendar_today_rounded),
           title: Text('Calendar'),
+        ),
+        BottomNavigationBarItem(
+          backgroundColor: Theme.of(context).primaryColor,
+          icon: Icon(Icons.account_box_outlined),
+          title: Text('Profile'),
         ),
       ],
     );
