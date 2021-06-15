@@ -60,6 +60,6 @@ static const routeName = '/calendar';
                             ),
                 ),
         ),
-        bottomNavigationBar: BottomNavigator(0, context));
+        bottomNavigationBar: BottomNavigator(1, context));
   }
 }

@@ -17,12 +17,16 @@ class BottomNavigator extends StatelessWidget {
         print(index);
         switch (index) {
           case 0:
-            Navigator.of(context)
-                .pushReplacementNamed(ImagesListScreen.routeName);
+            Navigator.of(context).pushReplacement(PageRouteBuilder(
+              pageBuilder: (_, __, ___) => ImagesListScreen(),
+              transitionDuration: Duration(seconds: 0),
+            ));
             break;
           case 1:
-            Navigator.of(context)
-                .pushReplacementNamed(CalendarScreen.routeName);
+            Navigator.of(context).pushReplacement(PageRouteBuilder(
+              pageBuilder: (_, __, ___) =>CalendarScreen(),
+              transitionDuration: Duration(seconds: 0),
+            ));
             break;
         }
       },
