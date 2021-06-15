@@ -58,7 +58,7 @@ class PlacesListScreen extends StatelessWidget {
                             ),
                 ),
         ),
-        bottomNavigationBar: BottomNavigator(0));
+        bottomNavigationBar: BottomNavigator(0, context));
   }
 }
 

@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class BottomNavigator extends StatelessWidget {
   final int indexNavigator;
+  final BuildContext context;
 
-  BottomNavigator(this.indexNavigator);
+  BottomNavigator(this.indexNavigator, this.context);
 
   @override
   Widget build(BuildContext context) {
