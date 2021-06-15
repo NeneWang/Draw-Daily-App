@@ -38,7 +38,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
 
   List<Event> _getEventsForDay(DateTime day) {
     // Implementation example
-    print(kEvents);
+    // print(kEvents);
     return kEvents[day] ?? [];
   }
 
