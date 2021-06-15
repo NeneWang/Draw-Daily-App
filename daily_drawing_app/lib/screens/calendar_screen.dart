@@ -7,13 +7,14 @@ import 'image_detail_screen.dart';
 
 import '../widgets/bottom_navigator.dart';
 
-class ImagesListScreen extends StatelessWidget {
-  static const routeName = '/images-list';
+class CalendarScreen extends StatelessWidget {
+static const routeName = '/calendar';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('My Images'),
+          title: Text('View Progress'),
           actions: <Widget>[
             IconButton(
               icon: Icon(Icons.add),
@@ -62,4 +63,3 @@ class ImagesListScreen extends StatelessWidget {
         bottomNavigationBar: BottomNavigator(0, context));
   }
 }
-
