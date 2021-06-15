@@ -48,11 +48,15 @@ class _TableMultiExampleState extends State<TableMultiExample> {
     setState(() {
       _focusedDay = focusedDay;
       // Update values in a Set
-      if (_selectedDays.contains(selectedDay)) {
-        _selectedDays.remove(selectedDay);
-      } else {
-        _selectedDays.add(selectedDay);
-      }
+      // if (_selectedDays.contains(selectedDay)) {
+      //   _selectedDays.remove(selectedDay);
+      // } else {
+      //   _selectedDays.add(selectedDay);
+      // }
+      // print(_selectedDays);
+      _selectedDays.clear();
+      _selectedDays .add(selectedDay);
+
     });
 
     _selectedEvents.value = _getEventsForDays(_selectedDays);

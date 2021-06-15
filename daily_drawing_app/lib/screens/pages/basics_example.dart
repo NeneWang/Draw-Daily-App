@@ -1,6 +1,7 @@
 // Copyright 2019 Aleksander Woźniak
 // SPDX-License-Identifier: Apache-2.0
 
+import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -16,6 +17,22 @@ class _TableBasicsExampleState extends State<TableBasicsExample> {
   DateTime _focusedDay = DateTime.now();
   DateTime _selectedDay;
 
+  List<Event> _getEventsForDay(DateTime day) {
+    // Implementation example
+    print(kEvents);
+    return kEvents[day] ?? [];
+  }
+
+  List<Event> _getEventsForDays(Set<DateTime> days) {
+    // Implementation example
+    // Note that days are in selection order (same applies to events)
+    return [
+      for (final d in days) ..._getEventsForDay(d),
+    ];
+  }
+
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,6 +43,7 @@ class _TableBasicsExampleState extends State<TableBasicsExample> {
         firstDay: kFirstDay,
         lastDay: kLastDay,
         focusedDay: _focusedDay,
+        eventLoader: _getEventsForDay,
         calendarFormat: _calendarFormat,
         selectedDayPredicate: (day) {
           // Use `selectedDayPredicate` to determine which day is currently selected.
