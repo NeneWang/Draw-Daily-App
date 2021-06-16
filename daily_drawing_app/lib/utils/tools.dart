@@ -56,6 +56,12 @@ class Tools {
     if (await canLaunch(link)) {
       await launch(link);
     }
+
   }
+
+  static DateTime getSimplifiedDate(DateTime dateTime){
+    return DateTime(dateTime.year, dateTime.month, dateTime.day);
+  }
+
 
 }

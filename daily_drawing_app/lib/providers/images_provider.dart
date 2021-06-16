@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import '../models/ImageData.dart';
 import '../helpers/db_helper.dart';
 import '../helpers/location_helper.dart';
+import '../utils/tools.dart';
 
 class GreatPlaces with ChangeNotifier {
   List<ImageData> _events = [];
@@ -19,8 +20,12 @@ class GreatPlaces with ChangeNotifier {
     sortedByDate.sort((b, a) => a.dateTime.compareTo(b.dateTime));
     // print(_events[_events.length - 1].dateTime);
     // print(sortedByDate[0].title);
-    sortedByDate.forEach((individualDate) {
-      print(individualDate.dateTime.subtract(const Duration(days: 1)));
+    int streakCounter = 0;
+    DateTime lastDate =
+        Tools.getSimplifiedDate(_events[_events.length - 1].dateTime);
+    sortedByDate.forEach((singleEvent) {
+      DateTime simplifiedDate = Tools.getSimplifiedDate(singleEvent.dateTime);
+      DateTime previousDate = simplifiedDate.subtract(const Duration(days: 1));
     });
 
     return events.length;
