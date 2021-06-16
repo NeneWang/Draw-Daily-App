@@ -10,6 +10,8 @@ import '../widgets/stat_highlights.dart';
 
 import '../widgets/black_outline_button.dart';
 
+import '../widgets/stackeable_black_outline_button.dart';
+
 class ProfileScreen extends StatelessWidget {
   static const routeName = '/profile';
   @override
@@ -26,7 +28,6 @@ class ProfileScreen extends StatelessWidget {
           ],
         ),
         body: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               SizedBox(
                 height: 20,
@@ -79,9 +80,33 @@ class ProfileScreen extends StatelessWidget {
                   )
                 ],
               ),
-
-              SizedBox(height: 20,),
-              
+              SizedBox(
+                height: 20,
+              ),
+              Column(
+                children: [
+                  StackeableBlackOutlinedButton(
+                    title: "Settings",
+                    onClickHandle: () {},
+                  ),
+                  StackeableBlackOutlinedButton(
+                    title: "Notifications",
+                    onClickHandle: () {},
+                  ),
+                  StackeableBlackOutlinedButton(
+                    title: "About",
+                    onClickHandle: () {},
+                  ),
+                  StackeableBlackOutlinedButton(
+                    title: "Friends",
+                    onClickHandle: () {},
+                  ),
+                  StackeableBlackOutlinedButton(
+                    title: "Request Feature",
+                    onClickHandle: () {},
+                  ),
+                ],
+              )
             ]),
         bottomNavigationBar: BottomNavigator(2, context));
   }
