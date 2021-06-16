@@ -79,6 +79,9 @@ class ProfileScreen extends StatelessWidget {
                   )
                 ],
               ),
+
+              SizedBox(height: 20,),
+              
             ]),
         bottomNavigationBar: BottomNavigator(2, context));
   }
