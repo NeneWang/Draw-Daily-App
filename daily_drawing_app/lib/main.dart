@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
         home: ImagesListScreen(),
         routes: {
           AddPlaceScreen.routeName: (ctx) => AddPlaceScreen(),
-          PlaceDetailScreen.routeName: (ctx) => PlaceDetailScreen(),
+          ImageDetailScreen.routeName: (ctx) => ImageDetailScreen(),
           ImagesListScreen.routeName: (ctx) => ImagesListScreen(),
           CalendarScreen.routeName: (ctx) => CalendarScreen(),
 

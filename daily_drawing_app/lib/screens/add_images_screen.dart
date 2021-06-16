@@ -33,11 +33,10 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
   }
 
   void _addTag(String tagName) {
-    setState(() {
+  setState(() {
       selectedTags.add(tagName);
     });
     _tagsController.clear();
-    print(selectedTags);
   }
 
   Iterable<Widget> get getTagsWidgets sync* {

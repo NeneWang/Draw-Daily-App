@@ -80,12 +80,13 @@ class _CalendarScreenState extends State<CalendarScreen> {
     if (!firstTimeRendered) {
       firstTimeRendered = true;
 
-      // print("First TIme");
-      // print(_refreshImages(context));
       var imagesData = Provider.of<GreatPlaces>(context, listen: false).events;
       var lastKey = DateTime.utc(2020, 5, 1);
       List<Event> individualdateEvents = [];
       var thisEventDate;
+
+      var imageDataEntryList = imagesData.toList();
+      // for (var key in imagesData.keys) print(key); 
 
       imagesData.forEach((element) {
         thisEventDate = DateTime.utc(element.dateTime.year,
@@ -94,13 +95,15 @@ class _CalendarScreenState extends State<CalendarScreen> {
           individualdateEvents.clear();
         }
 
+        // print(imageDataEntryList[0].key);
+        
+
         lastKey = thisEventDate;
 
-        individualdateEvents.add(Event(element.title));
+        individualdateEvents.add(Event(element.id));
         myDates.addAll({
           thisEventDate: [...individualdateEvents],
         });
-
       });
 
       kEvents..addAll(myDates);
@@ -120,8 +123,12 @@ class _CalendarScreenState extends State<CalendarScreen> {
         ),
         body: Column(
           children: [
-            SizedBox(height: 20,),
-            Text("Streaks: ${imageProvider.currentStreak} 🔥 ",),
+            SizedBox(
+              height: 20,
+            ),
+            Text(
+              "Streaks: ${imageProvider.currentStreak} 🔥 ",
+            ),
             TableCalendar<Event>(
               firstDay: kFirstDay,
               lastDay: kLastDay,
@@ -163,7 +170,18 @@ class _CalendarScreenState extends State<CalendarScreen> {
                           borderRadius: BorderRadius.circular(12.0),
                         ),
                         child: ListTile(
-                          onTap: () => print('${value[index]}'),
+                          onTap: () {
+                            // Navigator.of(context).pushNamed(
+                            //   ImageDetailScreen.routeName,
+                            //   arguments: index,
+                            // );
+                            String eventName =  '${value[index]}';
+                            //find item with same name????? nah
+                            print('${index}');
+                            // Display the item with the current trac
+
+                            print(imagesDatas[0].title);
+                          },
                           title: Text('${value[index]}'),
                         ),
                       );
