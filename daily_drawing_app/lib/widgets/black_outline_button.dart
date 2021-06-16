@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 class BlackOutlinedButton extends StatelessWidget {
   String title;
 
-  BlackOutlinedButton({this.title = "Button"});
+  Function onClickHandle;
+
+  BlackOutlinedButton({this.title = "Button", this.onClickHandle});
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
@@ -16,7 +18,7 @@ class BlackOutlinedButton extends StatelessWidget {
           primary: Colors.transparent),
       child: Text(title,
           style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
-      onPressed: () {},
+      onPressed: onClickHandle,
     );
   }
 }

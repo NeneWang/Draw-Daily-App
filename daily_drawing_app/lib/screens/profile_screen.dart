@@ -21,9 +21,7 @@ class ProfileScreen extends StatelessWidget {
           actions: <Widget>[
             IconButton(
               icon: Icon(Icons.sync),
-              onPressed: () {
-                Navigator.of(context).pushNamed(AddPlaceScreen.routeName);
-              },
+              onPressed: () {},
             ),
           ],
         ),
@@ -63,13 +61,22 @@ class ProfileScreen extends StatelessWidget {
                 height: 20,
               ),
               Row(
-                
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  BlackOutlinedButton(title: "Upload Image",),
-                  SizedBox(width: 20,),
-                  BlackOutlinedButton(title: "Get Prompt",)
+                  BlackOutlinedButton(
+                    title: "Upload Image",
+                    onClickHandle: () {
+                      Navigator.of(context).pushNamed(AddPlaceScreen.routeName);
+                    },
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  BlackOutlinedButton(
+                    title: "Get Prompt",
+                    onClickHandle: () {},
+                  )
                 ],
               ),
             ]),
