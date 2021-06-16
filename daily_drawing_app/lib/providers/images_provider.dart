@@ -1,11 +1,9 @@
 import 'dart:io';
 
-import 'package:daily_drawing_app/screens/utils.dart';
 import 'package:flutter/foundation.dart';
 
 import '../models/ImageData.dart';
 import '../helpers/db_helper.dart';
-import '../helpers/location_helper.dart';
 import '../utils/tools.dart';
 
 class GreatPlaces with ChangeNotifier {
