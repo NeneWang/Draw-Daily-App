@@ -35,6 +35,15 @@ class ProfileScreen extends StatelessWidget {
                 children: <Widget>[
                   StatHighlight(
                     screenSize: screenSize, title: "5", description: "Streaks",
+                  ),
+                  StatHighlight(
+                    screenSize: screenSize, title: "1", description: "Weeks",
+                  ),
+                  StatHighlight(
+                    screenSize: screenSize, title: "6", description: "Drawings",
+                  ),
+                  StatHighlight(
+                    screenSize: screenSize, title: "5", description: "Max Streaks",
                   )
                 ],
               )

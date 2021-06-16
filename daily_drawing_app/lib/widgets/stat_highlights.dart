@@ -13,7 +13,7 @@ class StatHighlight extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: screenSize.width / 4,
+      width: screenSize.width / 4.5,
       height: screenSize.height / 8,
       child: Card(
           child: Column(
