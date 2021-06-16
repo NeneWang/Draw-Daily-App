@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 
 class StatHighlight extends StatelessWidget {
   Size screenSize;
-  
-  StatHighlight({@required this.screenSize});
+  String title;
+  String description;
+
+  StatHighlight(
+      {@required this.screenSize,
+      @required this.title,
+      @required this.description});
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +20,10 @@ class StatHighlight extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          Text('5',),
-          Text('Streaks'),
+          Text(
+            title,
+          ),
+          Text(description),
         ],
       )),
     );
