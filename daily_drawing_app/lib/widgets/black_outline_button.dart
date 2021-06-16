@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class BlackOutlinedButton extends StatelessWidget {
-  BlackOutlinedButton();
+  String title;
+
+  BlackOutlinedButton({this.title = "Button"});
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
@@ -12,7 +14,7 @@ class BlackOutlinedButton extends StatelessWidget {
               borderRadius: BorderRadius.circular(20)),
           padding: EdgeInsets.symmetric(horizontal: 30),
           primary: Colors.transparent),
-      child: Text("Upload Image",
+      child: Text(title,
           style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
       onPressed: () {},
     );

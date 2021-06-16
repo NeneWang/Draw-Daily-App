@@ -8,6 +8,8 @@ import 'image_detail_screen.dart';
 import '../widgets/bottom_navigator.dart';
 import '../widgets/stat_highlights.dart';
 
+import '../widgets/black_outline_button.dart';
+
 class ProfileScreen extends StatelessWidget {
   static const routeName = '/profile';
   @override
@@ -62,19 +64,8 @@ class ProfileScreen extends StatelessWidget {
               ),
               Row(
                 children: [
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        elevation: 0,
-                        shape: RoundedRectangleBorder(
-                            side: BorderSide(color: Colors.black, width: 1),
-                            borderRadius: BorderRadius.circular(20)),
-                        padding: EdgeInsets.symmetric(horizontal: 30),
-                        primary: Colors.transparent),
-                    child: Text("Upload Image",
-                        style: TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.bold)),
-                    onPressed: () {},
-                  ),
+                  BlackOutlinedButton(title: "Upload Image",),
+                  BlackOutlinedButton(title: "Get Prompt",)
                 ],
               ),
             ]),
