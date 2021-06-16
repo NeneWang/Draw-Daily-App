@@ -17,10 +17,10 @@ class GreatPlaces with ChangeNotifier {
     // You get the streak by counting backwards the items okok probably like sort them first by date, because it is not sorted
     List<ImageData> sortedByDate = [...events];
     sortedByDate.sort((b, a) => a.dateTime.compareTo(b.dateTime));
-    print(_events[_events.length - 1].dateTime);
-    print(sortedByDate[0].title);
-    sortedByDate.forEach((element) {
-      print(element.dateTime);
+    // print(_events[_events.length - 1].dateTime);
+    // print(sortedByDate[0].title);
+    sortedByDate.forEach((individualDate) {
+      print(individualDate.dateTime.subtract(const Duration(days: 1)));
     });
 
     return events.length;

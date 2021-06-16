@@ -3,7 +3,6 @@
 
 import 'dart:collection';
 
-import 'package:daily_drawing_app/models/ImageData.dart';
 import 'package:daily_drawing_app/providers/images_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
