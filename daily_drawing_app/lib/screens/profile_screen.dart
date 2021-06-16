@@ -6,12 +6,13 @@ import '../providers/images_provider.dart';
 import 'image_detail_screen.dart';
 
 import '../widgets/bottom_navigator.dart';
+import '../widgets/stat_highlights.dart';
 
 class ProfileScreen extends StatelessWidget {
-static const routeName = '/profile';
-
+  static const routeName = '/profile';
   @override
   Widget build(BuildContext context) {
+    final Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
         appBar: AppBar(
           title: Text('Profile'),
@@ -24,7 +25,20 @@ static const routeName = '/profile';
             ),
           ],
         ),
-        body: Column(),
+        body: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: <Widget>[
+                  StatHighlight(
+                    screenSize: screenSize,
+                  )
+                ],
+              )
+            ]),
         bottomNavigationBar: BottomNavigator(2, context));
   }
 }
