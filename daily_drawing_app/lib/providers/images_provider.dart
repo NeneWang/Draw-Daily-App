@@ -7,21 +7,22 @@ import '../helpers/db_helper.dart';
 import '../helpers/location_helper.dart';
 
 class GreatPlaces with ChangeNotifier {
-  List<ImageData> _items = [];
+  List<ImageData> _events = [];
 
-  List<ImageData> get items {
-    return [..._items];
+  List<ImageData> get events {
+    return [..._events];
   }
 
   int get currentStreak {
-
+    // You get the streak by counting backwards the items
+    print(_events);
 
     return 1;
   }
 
 
   ImageData findById(String id) {
-    return _items.firstWhere((place) => place.id == id);
+    return _events.firstWhere((place) => place.id == id);
   }
 
   Future<void> addImage(String pickedTitle, File pickedImage, String testDate,
@@ -42,7 +43,7 @@ class GreatPlaces with ChangeNotifier {
       dateTime: DateTime.parse(testDate),
       tags: selectedTags,
     );
-    _items.add(newPlace);
+    _events.add(newPlace);
     notifyListeners();
     DBHelper.insert('user_places', {
       'id': newPlace.id,
@@ -59,7 +60,7 @@ class GreatPlaces with ChangeNotifier {
     final dataList = await DBHelper.getData('user_places');
     // print("Fetching");
     // print(dataList);
-    _items = dataList
+    _events = dataList
         .map(
           (item) => ImageData(
               id: item['id'],

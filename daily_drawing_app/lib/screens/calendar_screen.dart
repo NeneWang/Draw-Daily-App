@@ -70,7 +70,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
   @override
   Widget build(BuildContext context) {
     final imageProvider = Provider.of<GreatPlaces>(context, listen: false);
-    final imagesDatas = imageProvider.items;
+    final imagesDatas = imageProvider.events;
 
     var myDates = {
       DateTime.utc(2020, 5, 8): [
@@ -83,7 +83,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
 
       // print("First TIme");
       // print(_refreshImages(context));
-      var imagesData = Provider.of<GreatPlaces>(context, listen: false).items;
+      var imagesData = Provider.of<GreatPlaces>(context, listen: false).events;
       var lastKey = DateTime.utc(2020, 5, 1);
       List<Event> individualdateEvents = [];
       var thisEventDate;
