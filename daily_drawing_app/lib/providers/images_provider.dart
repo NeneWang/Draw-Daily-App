@@ -13,6 +13,12 @@ class GreatPlaces with ChangeNotifier {
     return [..._items];
   }
 
+  int get currentStreak {
+
+
+    return 1;
+  }
+
 
   ImageData findById(String id) {
     return _items.firstWhere((place) => place.id == id);

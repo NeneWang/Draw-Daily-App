@@ -69,13 +69,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Future<List<ImageData>> _refreshImages(BuildContext context) async {
-      final imagesDatas =
-          await Provider.of<GreatPlaces>(context, listen: false).items;
-
-      // = Provider.of<GreatPlaces>(context);
-      return imagesDatas;
-    }
+    final imageProvider = Provider.of<GreatPlaces>(context, listen: false);
+    final imagesDatas = imageProvider.items;
 
     var myDates = {
       DateTime.utc(2020, 5, 8): [
@@ -139,6 +134,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
         ),
         body: Column(
           children: [
+            // ##TODO add the counter here
+            Text("${imageProvider.currentStreak}"),
             TableCalendar<Event>(
               firstDay: kFirstDay,
               lastDay: kLastDay,
