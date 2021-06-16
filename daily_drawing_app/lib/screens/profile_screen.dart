@@ -32,18 +32,28 @@ class ProfileScreen extends StatelessWidget {
                 height: 20,
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   StatHighlight(
-                    screenSize: screenSize, title: "5", description: "Streaks",
+                    screenSize: screenSize,
+                    title: "5",
+                    description: "Streaks",
                   ),
                   StatHighlight(
-                    screenSize: screenSize, title: "1", description: "Weeks",
+                    screenSize: screenSize,
+                    title: "1",
+                    description: "Weeks",
                   ),
                   StatHighlight(
-                    screenSize: screenSize, title: "6", description: "Drawings",
+                    screenSize: screenSize,
+                    title: "6",
+                    description: "Drawings",
                   ),
                   StatHighlight(
-                    screenSize: screenSize, title: "5", description: "Max Streaks",
+                    screenSize: screenSize,
+                    title: "5",
+                    description: "Max Streaks",
                   )
                 ],
               )
