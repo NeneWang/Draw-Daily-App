@@ -3,6 +3,8 @@
 
 import 'dart:collection';
 
+import 'package:daily_drawing_app/models/ImageData.dart';
+import 'package:daily_drawing_app/providers/images_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -12,6 +14,10 @@ import 'add_images_screen.dart';
 
 import '../widgets/bottom_navigator.dart';
 
+import 'package:provider/provider.dart';
+
+import '../providers/images_provider.dart';
+
 class CalendarScreen extends StatefulWidget {
   static const routeName = '/calendar';
   @override
@@ -19,6 +25,8 @@ class CalendarScreen extends StatefulWidget {
 }
 
 class _CalendarScreenState extends State<CalendarScreen> {
+  bool firstTimeRendered = false;
+
   final ValueNotifier<List<Event>> _selectedEvents = ValueNotifier([]);
 
   // Using a `LinkedHashSet` is recommended due to equality comparison override
@@ -61,6 +69,63 @@ class _CalendarScreenState extends State<CalendarScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Future<List<ImageData>> _refreshImages(BuildContext context) async {
+      final imagesDatas =
+          await Provider.of<GreatPlaces>(context, listen: false).items;
+
+      // = Provider.of<GreatPlaces>(context);
+      return imagesDatas;
+    }
+
+    var myDates = {
+      DateTime.utc(2020, 5, 8): [
+        Event('Today\'s Event 1'),
+        Event('Today\'s Event 2'),
+      ],
+    };
+
+    if (!firstTimeRendered) {
+      firstTimeRendered = true;
+
+      // print("First TIme");
+      // print(_refreshImages(context));
+      var imagesData = Provider.of<GreatPlaces>(context, listen: false).items;
+      var lastKey = DateTime.utc(2020, 5, 1);
+      List<Event> individualdateEvents = [];
+      var thisEventDate;
+
+      imagesData.forEach((element) {
+        thisEventDate = DateTime.utc(element.dateTime.year,
+            element.dateTime.month, element.dateTime.day);
+
+        //also missed if there is now new one well you should o that then a third iteration is neeeded
+        if (thisEventDate != lastKey) {
+          individualdateEvents.clear();
+        }
+
+        lastKey = thisEventDate;
+
+        individualdateEvents.add(Event(element.title));
+        // print("I will add"+thisEventDate);
+        // print(individualdateEvents);
+        myDates.addAll({
+          thisEventDate: [...individualdateEvents],
+        });
+
+        // print("Today Events:");
+        // print(individualdateEvents);
+        // print(myDates);
+
+        //try finding the dates of the first one
+      });
+
+      // myDates.forEach((key, value) {
+      //   print(key);
+      //   print(value);
+      // });
+      kEvents..addAll(myDates);
+    }
+
     return Scaffold(
         appBar: AppBar(
           title: Text('View Progress'),

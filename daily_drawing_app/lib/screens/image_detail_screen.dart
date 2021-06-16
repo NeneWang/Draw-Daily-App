@@ -23,7 +23,7 @@ class PlaceDetailScreen extends StatelessWidget {
       });
     }
 
-    print(selectedPlace);
+    // print(selectedPlace);
 
     return Scaffold(
       appBar: AppBar(

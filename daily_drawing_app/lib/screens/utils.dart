@@ -18,22 +18,22 @@ class Event {
 /// Example events.
 ///
 /// Using a [LinkedHashMap] is highly recommended if you decide to use a map.
-final kEvents = LinkedHashMap<DateTime, List<Event>>(
+var kEvents = LinkedHashMap<DateTime, List<Event>>(
   equals: isSameDay,
   hashCode: getHashCode,
-)..addAll(myDates);
+);
 
 
-var myDates = {
-  DateTime.utc(2021, 5, 6): [
-    Event('Today\'s Event 1'),
-    Event('Today\'s Event 2'),
-  ],
-  DateTime.utc(2021, 5, 7): [
-    Event('Today\'s Event 1'),
-    Event('Today\'s Event 2'),
-  ],
-};
+// var myDates = {
+//   DateTime.utc(2021, 5, 6): [
+//     Event('Today\'s Event 1'),
+//     Event('Today\'s Event 2'),
+//   ],
+//   DateTime.utc(2021, 5, 7): [
+//     Event('Today\'s Event 1'),
+//     Event('Today\'s Event 2'),
+//   ],
+// };
 
 int getHashCode(DateTime key) {
   return key.day * 1000000 + key.month * 10000 + key.year;

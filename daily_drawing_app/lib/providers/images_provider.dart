@@ -13,6 +13,7 @@ class GreatPlaces with ChangeNotifier {
     return [..._items];
   }
 
+
   ImageData findById(String id) {
     return _items.firstWhere((place) => place.id == id);
   }
@@ -27,7 +28,7 @@ class GreatPlaces with ChangeNotifier {
     //   address: address,
     // );
 
-    print("uploading place");
+    // print("uploading place");
     final newPlace = ImageData(
       id: DateTime.now().toString(),
       image: pickedImage,
@@ -44,14 +45,14 @@ class GreatPlaces with ChangeNotifier {
       'dateTime': newPlace.dateTime.toIso8601String(),
       'tags': newPlace.tags.join(",")
     });
-    print("Successfully submitted");
-    print(newPlace.tags.join(","));
+    // print("Successfully submitted");
+    // print(newPlace.tags.join(","));
   }
 
   Future<void> fetchAndSetImages() async {
     final dataList = await DBHelper.getData('user_places');
-    print("Fetching");
-    print(dataList);
+    // print("Fetching");
+    // print(dataList);
     _items = dataList
         .map(
           (item) => ImageData(
