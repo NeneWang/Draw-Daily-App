@@ -176,15 +176,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                         ),
                         child: ListTile(
                           onTap: () {
-                            // Navigator.of(context).pushNamed(
-                            //   ImageDetailScreen.routeName,
-                            //   arguments: index,
-                            // );
                             String eventName = '${value[index]}';
-                            //find item with same name????? nah
-                            // print('${index}');
-                            // Display the item with the current trac
-                            // print(imagesDatas.first.id);
 
                             Navigator.of(context).pushNamed(
                               ImageDetailScreen.routeName,

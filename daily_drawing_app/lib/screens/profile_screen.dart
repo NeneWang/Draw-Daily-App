@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import 'add_images_screen.dart';
+import 'package:provider/provider.dart';
 import '../providers/images_provider.dart';
-import 'image_detail_screen.dart';
 
 import '../widgets/bottom_navigator.dart';
 import '../widgets/stat_highlights.dart';
@@ -12,11 +11,30 @@ import '../widgets/black_outline_button.dart';
 
 import '../widgets/stackeable_black_outline_button.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   static const routeName = '/profile';
+
+  @override
+  _ProfileScreenState createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  bool firstTimeRendered = false;
+  int streaks = 0;
+
+
   @override
   Widget build(BuildContext context) {
+    if (!firstTimeRendered) {
+      firstTimeRendered = true;
+
+
+
+    }
+
+    final imageProvider = Provider.of<GreatPlaces>(context, listen: false);
     final Size screenSize = MediaQuery.of(context).size;
+
     return Scaffold(
         appBar: AppBar(
           title: Text('Profile'),
@@ -27,88 +45,86 @@ class ProfileScreen extends StatelessWidget {
             ),
           ],
         ),
-        body: Column(
+        body: Column(children: <Widget>[
+          SizedBox(
+            height: 20,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              SizedBox(
-                height: 20,
+              StatHighlight(
+                screenSize: screenSize,
+                title: "5",
+                description: "Streaks",
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  StatHighlight(
-                    screenSize: screenSize,
-                    title: "5",
-                    description: "Streaks",
-                  ),
-                  StatHighlight(
-                    screenSize: screenSize,
-                    title: "1",
-                    description: "Weeks",
-                  ),
-                  StatHighlight(
-                    screenSize: screenSize,
-                    title: "6",
-                    description: "Drawings",
-                  ),
-                  StatHighlight(
-                    screenSize: screenSize,
-                    title: "5",
-                    description: "Max Streaks",
-                  )
-                ],
+              StatHighlight(
+                screenSize: screenSize,
+                title: "1",
+                description: "Weeks",
               ),
-              SizedBox(
-                height: 20,
+              StatHighlight(
+                screenSize: screenSize,
+                title: "6",
+                description: "Drawings",
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  BlackOutlinedButton(
-                    title: "Upload Image",
-                    onClickHandle: () {
-                      Navigator.of(context).pushNamed(AddPlaceScreen.routeName);
-                    },
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  BlackOutlinedButton(
-                    title: "Get Prompt",
-                    onClickHandle: () {},
-                  )
-                ],
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Column(
-                
-                children: [
-                  StackeableBlackOutlinedButton(
-                    title: "Settings",
-                    onClickHandle: () {},
-                  ),
-                  StackeableBlackOutlinedButton(
-                    title: "Notifications",
-                    onClickHandle: () {},
-                  ),
-                  StackeableBlackOutlinedButton(
-                    title: "About",
-                    onClickHandle: () {},
-                  ),
-                  StackeableBlackOutlinedButton(
-                    title: "Friends",
-                    onClickHandle: () {},
-                  ),
-                  StackeableBlackOutlinedButton(
-                    title: "Request Feature",
-                    onClickHandle: () {},
-                  ),
-                ],
+              StatHighlight(
+                screenSize: screenSize,
+                title: "5",
+                description: "Max Streaks",
               )
-            ]),
+            ],
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              BlackOutlinedButton(
+                title: "Upload Image",
+                onClickHandle: () {
+                  Navigator.of(context).pushNamed(AddPlaceScreen.routeName);
+                },
+              ),
+              SizedBox(
+                width: 20,
+              ),
+              BlackOutlinedButton(
+                title: "Get Prompt",
+                onClickHandle: () {},
+              )
+            ],
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Column(
+            children: [
+              StackeableBlackOutlinedButton(
+                title: "Settings",
+                onClickHandle: () {},
+              ),
+              StackeableBlackOutlinedButton(
+                title: "Notifications",
+                onClickHandle: () {},
+              ),
+              StackeableBlackOutlinedButton(
+                title: "About",
+                onClickHandle: () {},
+              ),
+              StackeableBlackOutlinedButton(
+                title: "Friends",
+                onClickHandle: () {},
+              ),
+              StackeableBlackOutlinedButton(
+                title: "Request Feature",
+                onClickHandle: () {},
+              ),
+            ],
+          )
+        ]),
         bottomNavigationBar: BottomNavigator(2, context));
   }
 }
