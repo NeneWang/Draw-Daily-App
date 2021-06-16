@@ -17,6 +17,7 @@ import '../widgets/bottom_navigator.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/images_provider.dart';
+import 'image_detail_screen.dart';
 
 class CalendarScreen extends StatefulWidget {
   static const routeName = '/calendar';
@@ -184,11 +185,11 @@ class _CalendarScreenState extends State<CalendarScreen> {
                             // print('${index}');
                             // Display the item with the current trac
                             // print(imagesDatas.first.id);
-                            print(imagesDatas
-                                .firstWhere((element) =>
-                                    element.id == '${value[index]}')
-                                .title);
 
+                            Navigator.of(context).pushNamed(
+                              ImageDetailScreen.routeName,
+                              arguments: firstImageDataWithId(imagesDatas, '${value[index]}').id,
+                            );
                             print('${value[index]}');
                             //find current item id????
                           },
