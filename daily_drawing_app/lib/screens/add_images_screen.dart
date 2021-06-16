@@ -63,17 +63,14 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
     if (_pickedImage == null) {
       return;
     }
+    var registerDate =
+        inputDate == "" ? DateTime.now() : DateTime.parse(inputDate);
     Provider.of<GreatPlaces>(context, listen: false).addImage(
         _titleController.text == "" || _titleController.text == null
-            ? " Progress ${inputDate == ""
-            ? DateTime.now().toIso8601String()
-            : DateTime.parse(inputDate).toIso8601String()}"
+            ? " Progress ${Tools.getFormattedDateShortDateTime(registerDate)}  ${Tools.getFormattedTimeEventDateTime(DateTime.now())}"
             : _titleController.text,
         _pickedImage,
-        // ##HERE
-        inputDate == ""
-            ? DateTime.now().toIso8601String()
-            : DateTime.parse(inputDate).toIso8601String(),
+        registerDate.toIso8601String(),
         selectedTags);
     Navigator.of(context).pop();
 
