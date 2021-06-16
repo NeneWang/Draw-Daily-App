@@ -13,6 +13,21 @@ class GreatPlaces with ChangeNotifier {
     return [..._events];
   }
 
+  int get weeksStreak {
+    // How does this even work? Like every seven days there has to be more than one?
+    //Supposing this works, you should be able to put up 3 weeks
+
+    return 0;
+  }
+
+  int get imagesUploaded {
+    return _events.length;
+  }
+
+  int get maxStreaks {
+    return currentStreak;
+  }
+
   int get currentStreak {
     // You get the streak by counting backwards the items okok probably like sort them first by date, because it is not sorted
     List<ImageData> sortedByDate = [...events];
