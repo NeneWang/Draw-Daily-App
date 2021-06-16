@@ -84,6 +84,7 @@ class ProfileScreen extends StatelessWidget {
                 height: 20,
               ),
               Column(
+                
                 children: [
                   StackeableBlackOutlinedButton(
                     title: "Settings",
