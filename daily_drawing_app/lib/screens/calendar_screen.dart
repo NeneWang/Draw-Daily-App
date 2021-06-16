@@ -3,6 +3,7 @@
 
 import 'dart:collection';
 
+import 'package:daily_drawing_app/models/ImageData.dart';
 import 'package:daily_drawing_app/providers/images_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -41,6 +42,10 @@ class _CalendarScreenState extends State<CalendarScreen> {
   void dispose() {
     _selectedEvents.dispose();
     super.dispose();
+  }
+
+  ImageData firstImageDataWithId(List<ImageData> imagesDatas, String id) {
+    return imagesDatas.firstWhere((element) => element.id == id);
   }
 
   List<Event> _getEventsForDay(DateTime day) {
@@ -86,7 +91,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
       var thisEventDate;
 
       var imageDataEntryList = imagesData.toList();
-      // for (var key in imagesData.keys) print(key); 
+      // for (var key in imagesData.keys) print(key);
 
       imagesData.forEach((element) {
         thisEventDate = DateTime.utc(element.dateTime.year,
@@ -96,7 +101,6 @@ class _CalendarScreenState extends State<CalendarScreen> {
         }
 
         // print(imageDataEntryList[0].key);
-        
 
         lastKey = thisEventDate;
 
@@ -175,14 +179,21 @@ class _CalendarScreenState extends State<CalendarScreen> {
                             //   ImageDetailScreen.routeName,
                             //   arguments: index,
                             // );
-                            String eventName =  '${value[index]}';
+                            String eventName = '${value[index]}';
                             //find item with same name????? nah
-                            print('${index}');
+                            // print('${index}');
                             // Display the item with the current trac
+                            // print(imagesDatas.first.id);
+                            print(imagesDatas
+                                .firstWhere((element) =>
+                                    element.id == '${value[index]}')
+                                .title);
 
-                            print(imagesDatas[0].title);
+                            print('${value[index]}');
+                            //find current item id????
                           },
-                          title: Text('${value[index]}'),
+                          title: Text(
+                              '${firstImageDataWithId(imagesDatas, '${value[index]}').title}'),
                         ),
                       );
                     },
