@@ -7,6 +7,7 @@ import '../widgets/image_input.dart';
 import '../widgets/location_input.dart';
 import '../providers/images_provider.dart';
 import '../models/ImageData.dart';
+import 'package:daily_drawing_app/utils/tools.dart';
 
 class AddPlaceScreen extends StatefulWidget {
   static const routeName = '/add-images';
@@ -23,6 +24,9 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
 
   File _pickedImage;
   PlaceLocation _pickedLocation;
+
+  Future<DateTime> selectedDate;
+  String date = "-";
 
   void _selectImage(File pickedImage) {
     _pickedImage = pickedImage;
@@ -98,6 +102,19 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
                       controller: _tagsController,
                       onSubmitted: _addTag,
                     ),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          elevation: 0,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20)),
+                          padding: EdgeInsets.symmetric(horizontal: 30),
+                          primary: Theme.of(context).accentColor),
+                      child: Text("PICK DATE",
+                          style: TextStyle(color: Colors.white)),
+                      onPressed: () {
+                        showDialogPicker(context);
+                      },
+                    ),
                     Container(
                       padding: EdgeInsets.symmetric(horizontal: 15),
                       child: Row(
@@ -123,7 +140,6 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
             ),
           ),
           RaisedButton.icon(
-            
             icon: Icon(Icons.add),
             label: Text('Upload Image'),
             onPressed: _savePlace,
@@ -134,5 +150,28 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
         ],
       ),
     );
+  }
+
+  void showDialogPicker(BuildContext context) {
+    selectedDate = showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2050),
+      builder: (BuildContext context, Widget child) {
+        return Theme(
+          data: ThemeData.light(),
+          child: child,
+        );
+      },
+    );
+    selectedDate.then((value) {
+      setState(() {
+        if (value == null) return;
+        date = Tools.getFormattedDateSimple(value.millisecondsSinceEpoch);
+      });
+    }, onError: (error) {
+      print(error);
+    });
   }
 }
