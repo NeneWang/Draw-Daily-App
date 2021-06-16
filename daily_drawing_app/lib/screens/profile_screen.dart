@@ -20,20 +20,17 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   bool firstTimeRendered = false;
-  int streaks = 0;
-
+  String streaksText;
 
   @override
   Widget build(BuildContext context) {
-    if (!firstTimeRendered) {
-      firstTimeRendered = true;
-
-
-
-    }
-
     final imageProvider = Provider.of<GreatPlaces>(context, listen: false);
     final Size screenSize = MediaQuery.of(context).size;
+
+    if (!firstTimeRendered) {
+      firstTimeRendered = true;
+      streaksText = imageProvider.currentStreak.toString();
+    }
 
     return Scaffold(
         appBar: AppBar(
@@ -55,7 +52,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             children: <Widget>[
               StatHighlight(
                 screenSize: screenSize,
-                title: "5",
+                title: streaksText,
                 description: "Streaks",
               ),
               StatHighlight(
