@@ -63,5 +63,9 @@ class Tools {
     return DateTime(dateTime.year, dateTime.month, dateTime.day);
   }
 
+  static DateTime getPreviousDate(DateTime dateTime){
+    return dateTime.subtract(const Duration(days: 1));
+  }
+
 
 }

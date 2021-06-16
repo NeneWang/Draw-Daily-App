@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:daily_drawing_app/screens/utils.dart';
 import 'package:flutter/foundation.dart';
 
 import '../models/ImageData.dart';
@@ -20,15 +21,31 @@ class GreatPlaces with ChangeNotifier {
     sortedByDate.sort((b, a) => a.dateTime.compareTo(b.dateTime));
     // print(_events[_events.length - 1].dateTime);
     // print(sortedByDate[0].title);
-    int streakCounter = 0;
-    DateTime lastDate =
-        Tools.getSimplifiedDate(_events[_events.length - 1].dateTime);
-    sortedByDate.forEach((singleEvent) {
-      DateTime simplifiedDate = Tools.getSimplifiedDate(singleEvent.dateTime);
-      DateTime previousDate = simplifiedDate.subtract(const Duration(days: 1));
-    });
+    int streakCounter = 1;
+    DateTime lastDate;
+    bool firstLoop = true;
 
-    return events.length;
+    for (ImageData singleEvent in sortedByDate) {
+      DateTime simplifiedDate = Tools.getSimplifiedDate(singleEvent.dateTime);
+      if (firstLoop) {
+        lastDate = simplifiedDate;
+        firstLoop = false;
+        DateTime previousDate = Tools.getPreviousDate(lastDate);
+      }
+      DateTime previousDate = Tools.getPreviousDate(lastDate);
+
+      if (!(simplifiedDate == lastDate || simplifiedDate == previousDate)) {
+        break;
+      }
+
+      if (simplifiedDate == previousDate) {
+        lastDate = simplifiedDate;
+        DateTime previousDate = Tools.getPreviousDate(lastDate);
+        streakCounter++;
+      }
+    }
+
+    return streakCounter;
   }
 
   ImageData findById(String id) {
