@@ -17,7 +17,7 @@ static const routeName = '/profile';
           title: Text('Profile'),
           actions: <Widget>[
             IconButton(
-              icon: Icon(Icons.add),
+              icon: Icon(Icons.sync),
               onPressed: () {
                 Navigator.of(context).pushNamed(AddPlaceScreen.routeName);
               },
