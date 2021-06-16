@@ -35,24 +35,24 @@ class ImagesListScreen extends StatelessWidget {
                   child: Center(
                     child: const Text('Got no places yet, start adding some!'),
                   ),
-                  builder: (ctx, greatPlaces, ch) =>
-                      greatPlaces.events.length <= 0
+                  builder: (ctx, imagesData, ch) =>
+                      imagesData.events.length <= 0
                           ? ch
                           : ListView.builder(
-                              itemCount: greatPlaces.events.length,
+                              itemCount: imagesData.events.length,
                               itemBuilder: (ctx, i) => ListTile(
                                 leading: CircleAvatar(
                                   backgroundImage: FileImage(
-                                    greatPlaces.events[i].image,
+                                    imagesData.events[i].image,
                                   ),
                                 ),
-                                title: Text(greatPlaces.events[i].title),
-                                subtitle: Text(greatPlaces.events[i].dateTime
+                                title: Text(imagesData.events[i].title),
+                                subtitle: Text(imagesData.events[i].dateTime
                                     .toIso8601String()),
                                 onTap: () {
                                   Navigator.of(context).pushNamed(
-                                    PlaceDetailScreen.routeName,
-                                    arguments: greatPlaces.events[i].id,
+                                    ImageDetailScreen.routeName,
+                                    arguments: imagesData.events[i].id,
                                   );
                                 },
                               ),

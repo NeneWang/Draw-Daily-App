@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import '../providers/images_provider.dart';
 import './map_screen.dart';
 
-class PlaceDetailScreen extends StatelessWidget {
+class ImageDetailScreen extends StatelessWidget {
   static const routeName = '/place-detail';
 
   List<Widget> tagsWidget = [];
