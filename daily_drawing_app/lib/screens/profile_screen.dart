@@ -56,7 +56,27 @@ class ProfileScreen extends StatelessWidget {
                     description: "Max Streaks",
                   )
                 ],
-              )
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: [
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                            side: BorderSide(color: Colors.black, width: 1),
+                            borderRadius: BorderRadius.circular(20)),
+                        padding: EdgeInsets.symmetric(horizontal: 30),
+                        primary: Colors.transparent),
+                    child: Text("Upload Image",
+                        style: TextStyle(
+                            color: Colors.black, fontWeight: FontWeight.bold)),
+                    onPressed: () {},
+                  ),
+                ],
+              ),
             ]),
         bottomNavigationBar: BottomNavigator(2, context));
   }
