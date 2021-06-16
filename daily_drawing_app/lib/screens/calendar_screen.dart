@@ -90,8 +90,6 @@ class _CalendarScreenState extends State<CalendarScreen> {
       imagesData.forEach((element) {
         thisEventDate = DateTime.utc(element.dateTime.year,
             element.dateTime.month, element.dateTime.day);
-
-        //also missed if there is now new one well you should o that then a third iteration is neeeded
         if (thisEventDate != lastKey) {
           individualdateEvents.clear();
         }
@@ -99,23 +97,12 @@ class _CalendarScreenState extends State<CalendarScreen> {
         lastKey = thisEventDate;
 
         individualdateEvents.add(Event(element.title));
-        // print("I will add"+thisEventDate);
-        // print(individualdateEvents);
         myDates.addAll({
           thisEventDate: [...individualdateEvents],
         });
 
-        // print("Today Events:");
-        // print(individualdateEvents);
-        // print(myDates);
-
-        //try finding the dates of the first one
       });
 
-      // myDates.forEach((key, value) {
-      //   print(key);
-      //   print(value);
-      // });
       kEvents..addAll(myDates);
     }
 
@@ -133,8 +120,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
         ),
         body: Column(
           children: [
-            // ##TODO add the counter here
-            Text("${imageProvider.currentStreak}"),
+            SizedBox(height: 20,),
+            Text("Streaks: ${imageProvider.currentStreak} 🔥 ",),
             TableCalendar<Event>(
               firstDay: kFirstDay,
               lastDay: kLastDay,

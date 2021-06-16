@@ -52,15 +52,6 @@ class GreatPlaces with ChangeNotifier {
 
   Future<void> addImage(String pickedTitle, File pickedImage, String testDate,
       List<String> selectedTags) async {
-    // final address = await LocationHelper.getPlaceAddress(
-    //     pickedLocation.latitude, pickedLocation.longitude);
-    // final updatedLocation = PlaceLocation(
-    //   latitude: pickedLocation.latitude,
-    //   longitude: pickedLocation.longitude,
-    //   address: address,
-    // );
-
-    // print("uploading place");
     final newPlace = ImageData(
       id: DateTime.now().toString(),
       image: pickedImage,
