@@ -20,7 +20,7 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   bool firstTimeRendered = false;
-  String streaksText;
+  String streaksText, weeksStreakText, drawingsText, maxStreaks;
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +30,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
     if (!firstTimeRendered) {
       firstTimeRendered = true;
       streaksText = imageProvider.currentStreak.toString();
+      weeksStreakText = imageProvider.weeksStreak.toString();
+
+      drawingsText = imageProvider.imagesUploaded.toString();
+      maxStreaks = imageProvider.maxStreaks.toString();
     }
 
     return Scaffold(
@@ -57,17 +61,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               StatHighlight(
                 screenSize: screenSize,
-                title: "1",
+                title: weeksStreakText,
                 description: "Weeks",
               ),
               StatHighlight(
                 screenSize: screenSize,
-                title: "6",
+                title: drawingsText,
                 description: "Drawings",
               ),
               StatHighlight(
                 screenSize: screenSize,
-                title: "5",
+                title: maxStreaks,
                 description: "Max Streaks",
               )
             ],

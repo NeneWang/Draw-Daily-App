@@ -14,8 +14,24 @@ class GreatPlaces with ChangeNotifier {
   }
 
   int get weeksStreak {
-    // How does this even work? Like every seven days there has to be more than one?
-    //Supposing this works, you should be able to put up 3 weeks
+    List<ImageData> sortedByDate = [...events];
+    sortedByDate.sort((b, a) => a.dateTime.compareTo(b.dateTime));
+    int totalDaysWithouthBreaking = 1, diff;
+    DateTime lastDate = Tools.getSimplifiedDate(DateTime.now());
+
+    for (ImageData singleEvent in sortedByDate) {
+      DateTime simplifiedDate = Tools.getSimplifiedDate(singleEvent.dateTime);
+      diff = lastDate.difference(simplifiedDate).inDays;
+
+      if (diff > 7) {
+        break;
+      }
+
+      totalDaysWithouthBreaking += diff;
+      lastDate = simplifiedDate;
+    }
+
+    return (totalDaysWithouthBreaking / 7).floor()+1;
 
     return 0;
   }
