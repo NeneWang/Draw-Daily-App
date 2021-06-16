@@ -79,8 +79,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
 
     var myDates = {
       DateTime.utc(2020, 5, 8): [
-        Event('Today\'s Event 1'),
-        Event('Today\'s Event 2'),
+        Event('error'),
       ],
     };
 
