@@ -63,8 +63,12 @@ class ProfileScreen extends StatelessWidget {
                 height: 20,
               ),
               Row(
+                
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   BlackOutlinedButton(title: "Upload Image",),
+                  SizedBox(width: 20,),
                   BlackOutlinedButton(title: "Get Prompt",)
                 ],
               ),
