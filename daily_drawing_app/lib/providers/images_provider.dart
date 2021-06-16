@@ -15,7 +15,7 @@ class GreatPlaces with ChangeNotifier {
 
   int get currentStreak {
     // You get the streak by counting backwards the items
-    print(_events);
+    print(_events[_events.length-1].title);
 
     return 1;
   }
