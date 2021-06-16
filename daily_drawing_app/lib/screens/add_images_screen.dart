@@ -64,9 +64,16 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
       return;
     }
     Provider.of<GreatPlaces>(context, listen: false).addImage(
-        _titleController.text,
+        _titleController.text == "" || _titleController.text == null
+            ? " Progress ${inputDate == ""
+            ? DateTime.now().toIso8601String()
+            : DateTime.parse(inputDate).toIso8601String()}"
+            : _titleController.text,
         _pickedImage,
-        DateTime.now().toIso8601String(),
+        // ##HERE
+        inputDate == ""
+            ? DateTime.now().toIso8601String()
+            : DateTime.parse(inputDate).toIso8601String(),
         selectedTags);
     Navigator.of(context).pop();
 
@@ -98,7 +105,8 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
                       controller: _titleController,
                     ),
                     TextField(
-                      decoration: InputDecoration(labelText: 'Enter a tag (optional)'),
+                      decoration:
+                          InputDecoration(labelText: 'Enter a tag (optional)'),
                       controller: _tagsController,
                       onSubmitted: _addTag,
                     ),
@@ -116,8 +124,10 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
                         ],
                       ),
                     ),
-                    
-                    SizedBox( height: 10,),
+
+                    SizedBox(
+                      height: 10,
+                    ),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                           elevation: 0,
@@ -126,8 +136,9 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
                           padding: EdgeInsets.symmetric(horizontal: 30),
                           primary: Theme.of(context).accentColor),
                       child: Text(inputDate == "" ? "Today" : inputDate,
-                          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold )
-                          ),
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold)),
                       onPressed: () {
                         showDialogPicker(context);
                       },
@@ -173,6 +184,8 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
         if (value == null) return;
         inputDate = Tools.getFormattedDateSimple(value.millisecondsSinceEpoch);
       });
+
+      print(DateTime.parse(inputDate).toUtc());
     }, onError: (error) {
       print(error);
     });

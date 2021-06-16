@@ -23,8 +23,13 @@ class Tools {
     return newFormat.format(new DateTime.fromMillisecondsSinceEpoch(time));
   }
 
+    static String getFormattedDateShortDateTime(DateTime time) {
+    DateFormat newFormat = new DateFormat("MMM dd, yyyy");
+    return newFormat.format(time);
+  }
+
   static String getFormattedDateSimple(int time) {
-    DateFormat newFormat = new DateFormat("MMMM dd, yyyy");
+    DateFormat newFormat = new DateFormat("yyyy-MM-dd");
     return newFormat.format(new DateTime.fromMillisecondsSinceEpoch(time));
   }
 
@@ -36,6 +41,11 @@ class Tools {
   static String getFormattedTimeEvent(int time) {
     DateFormat newFormat = new DateFormat("h:mm a");
     return newFormat.format(new DateTime.fromMillisecondsSinceEpoch(time));
+  }
+
+    static String getFormattedTimeEventDateTime(DateTime time) {
+    DateFormat newFormat = new DateFormat("h:mm a");
+    return newFormat.format(time);
   }
   static String getFormattedCardNo(String cardNo){
     if(cardNo.length < 5) return cardNo;
