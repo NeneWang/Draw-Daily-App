@@ -28,7 +28,6 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
     _pickedImage = pickedImage;
   }
 
-
   void _addTag(String tagName) {
     setState(() {
       selectedTags.add(tagName);
@@ -61,7 +60,10 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
       return;
     }
     Provider.of<GreatPlaces>(context, listen: false).addImage(
-        _titleController.text, _pickedImage, DateTime.now().toIso8601String(), selectedTags);
+        _titleController.text,
+        _pickedImage,
+        DateTime.now().toIso8601String(),
+        selectedTags);
     Navigator.of(context).pop();
 
     // print("Saving Place");
@@ -82,6 +84,10 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
                 padding: EdgeInsets.all(10),
                 child: Column(
                   children: <Widget>[
+                    SizedBox(
+                      height: 10,
+                    ),
+                    ImageInput(_selectImage),
                     TextField(
                       decoration:
                           InputDecoration(labelText: 'Title (optional)'),
@@ -106,10 +112,7 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
                         ],
                       ),
                     ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    ImageInput(_selectImage),
+
                     SizedBox(
                       height: 10,
                     ),
@@ -120,11 +123,12 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
             ),
           ),
           RaisedButton.icon(
+            
             icon: Icon(Icons.add),
-            label: Text('Add Place'),
+            label: Text('Upload Image'),
             onPressed: _savePlace,
             elevation: 0,
-            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            // materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
             color: Theme.of(context).accentColor,
           ),
         ],

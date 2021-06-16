@@ -68,11 +68,11 @@ class _ImageInputState extends State<ImageInput> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
       children: <Widget>[
         Container(
-          width: 200,
-          height: 100,
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.width / 2.5,
           decoration:
               BoxDecoration(border: Border.all(width: 1, color: Colors.grey)),
           child: _storedImage != null
@@ -84,20 +84,22 @@ class _ImageInputState extends State<ImageInput> {
               : Text('No Image taken'),
           alignment: Alignment.center,
         ),
+        Padding(padding: EdgeInsets.all(10)),
         SizedBox(
           width: 10,
         ),
-        Column(
+        Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             FlatButton.icon(
-              icon: Icon(Icons.camera),
+              icon: Icon(Icons.camera_alt),
               label: Text('Take Pictures'),
               textColor: Theme.of(context).primaryColor,
               onPressed: _takePicture,
-            ),FlatButton.icon(
-              icon: Icon(Icons.camera),
+            ),
+            FlatButton.icon(
+              icon: Icon(Icons.image),
               label: Text('Choose Gallery'),
               textColor: Theme.of(context).primaryColor,
               onPressed: _takePictureFromGallery,
