@@ -46,17 +46,17 @@ class BottomNavigator extends StatelessWidget {
         BottomNavigationBarItem(
           backgroundColor: Theme.of(context).primaryColor,
           icon: Icon(Icons.photo),
-          title: Text('My Images'),
+          label: 'My Images',
         ),
         BottomNavigationBarItem(
           backgroundColor: Theme.of(context).primaryColor,
           icon: Icon(Icons.calendar_today_rounded),
-          title: Text('Calendar'),
+          label: 'Calendar',
         ),
         BottomNavigationBarItem(
           backgroundColor: Theme.of(context).primaryColor,
           icon: Icon(Icons.account_box_outlined),
-          title: Text('Profile'),
+          label: 'Profile',
         ),
       ],
     );
