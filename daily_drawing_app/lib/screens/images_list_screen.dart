@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 import 'add_images_screen.dart';
 import '../providers/images_provider.dart';
 import 'image_detail_screen.dart';
-
 import '../widgets/bottom_navigator.dart';
 
 class ImagesListScreen extends StatelessWidget {
